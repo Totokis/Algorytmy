@@ -1,25 +1,31 @@
-def readFile():
-    with open("opn.txt") as file:
+def file_read():
+    with open("lista_1.txt") as file:
+        lista_liczb = file.read().split(";")
+    return lista_liczb
+def max(lista_liczb):
+    handler = lista_liczb[0]
+    for element in lista_liczb:
+        if element > handler:
+            handler = element
+    max = handler
+    print(max)
+def readInfix():
+    with open("infix.txt") as file:
          lista = file.read().split(" ")
     return lista
-def countOPN(lista):
-    stack = []
-    for element in lista:
-        if element.isdigit():
-            stack.append(element)
-        elif element in ["+", "-", "*", "/"]:
-            a = stack.pop()
-            b = stack.pop()
-            stack.append(eval(str(b)+element+str(a)))
-    return stack
-def wyswietl(stack):
+def readPostfix():
+    with open("postfix.txt") as file:
+         lista = file.read().split(" ")
+    return lista
+def show(stack):
     print(stack.pop())
-
-def saveFile(str):
-    with open("output.txt","w") as file:
+def saveAsInfix(str):
+    with open("Infix_output.txt","w") as file:
         file.write(str)
-
-def infix_to_OPN(lista):
+def saveAsPostfix(str):
+    with open("Postfix_output.txt","w") as file:
+        file.write(str)
+def toPostfix(lista):
     stack = []
     output = []
     for element in lista:
@@ -113,22 +119,22 @@ def infix_to_OPN(lista):
     str_output = ""
     print(output)
     return (str_output.join(output))
+def toInfix(lista):
+    stack = []
+    print(lista)
+    for element in lista:
+        if element.isdigit():
+            print(element)
+            stack.append(element)
+        else:
+            print(stack)
+            a = stack.pop()
+            b = stack.pop()
+            stack.append((str(b) + element + str(a)))
+    return stack
 
-#def OPN_to_infix():
+saveAsPostfix(toPostfix(readInfix()))
 
-
-
-
-
-
-
-
-
-
-
-
-saveFile(infix_to_OPN(readFile()))
-#wyswietl(countOPN(readFile()))
 
 
 
