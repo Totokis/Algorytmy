@@ -114,7 +114,8 @@ def infix_to_OPN(lista):
     print(output)
     return (str_output.join(output))
 
-def OPN_to_infix():
+#def OPN_to_infix():
+
 
 
 
