@@ -130,12 +130,9 @@ def toInfix(lista):
             print(stack)
             a = stack.pop()
             b = stack.pop()
-            stack.append((str(b) + element + str(a)))
-    return stack
 
-saveAsPostfix(toPostfix(readInfix()))
-
-
+            stack.append("( " + b + element + a + " )")
+    return stack.pop()
 
 
 
