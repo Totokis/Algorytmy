@@ -1,7 +1,32 @@
+#-----definicje funkcji pomocniczych----------------------#
 def file_read():
     with open("lista_1.txt") as file:
         lista_liczb = file.read().split(";")
     return lista_liczb
+
+def readInfix():
+    with open("infix.txt") as file:
+        lista = file.read().split(" ")
+    return lista
+
+def readPostfix():
+    with open("postfix.txt") as file:
+        lista = file.read().split(" ")
+    return lista
+
+def show(stack):
+    print(stack.pop())
+
+def saveAsInfix(str):
+    with open("Infix_output.txt","w") as file:
+        file.write(str)
+
+def saveAsPostfix(str):
+    with open("Postfix_output.txt","w") as file:
+        file.write(str)
+#---------------------------------------------------------#
+
+
 def max(lista_liczb):
     handler = lista_liczb[0]
     for element in lista_liczb:
@@ -9,22 +34,6 @@ def max(lista_liczb):
             handler = element
     max = handler
     print(max)
-def readInfix():
-    with open("infix.txt") as file:
-         lista = file.read().split(" ")
-    return lista
-def readPostfix():
-    with open("postfix.txt") as file:
-         lista = file.read().split(" ")
-    return lista
-def show(stack):
-    print(stack.pop())
-def saveAsInfix(str):
-    with open("Infix_output.txt","w") as file:
-        file.write(str)
-def saveAsPostfix(str):
-    with open("Postfix_output.txt","w") as file:
-        file.write(str)
 def toPostfix(lista):
     stack = []
     output = []
@@ -34,7 +43,6 @@ def toPostfix(lista):
             output.append(element)
             print(f"Output : {output}")
             print(f"Stack: {stack}")
-
         elif element in ["+", "-", "*", "/", "^"]:
             print(element)
             if element == "+":
@@ -130,7 +138,6 @@ def toInfix(lista):
             print(stack)
             a = stack.pop()
             b = stack.pop()
-
             stack.append("( " + b + element + a + " )")
     return stack.pop()
 
